@@ -1,6 +1,7 @@
 import { MatrixRain } from '@/components/matrix-rain';
 import { ProjectsSection } from '@/components/projects-section';
 import { HeroText } from '@/components/hero-text';
+import { ContactSection } from '@/components/contact-section';
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <HeroText />
       </section>
       <ProjectsSection />
+      <ContactSection />
     </main>
   );
 }
