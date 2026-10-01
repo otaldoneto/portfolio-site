@@ -4,6 +4,8 @@ export type Project = {
   github: string;
   liveDemo?: string;
   tech: string[];
+  image: string;
+  imageAlt: string;
 };
 
 export const PROJECTS: Project[] = [
@@ -14,6 +16,8 @@ export const PROJECTS: Project[] = [
     github: 'https://github.com/otaldoneto/Project-Help-Desk',
     liveDemo: 'https://service-order-management-nxil.onrender.com',
     tech: ['Java', 'Spring Boot', 'Spring Security', 'PostgreSQL'],
+    image: '/screenshots/service-order-api.jpg',
+    imageAlt: 'Documentação Swagger da Service Order Management API',
   },
   {
     title: 'notification-service',
@@ -21,6 +25,8 @@ export const PROJECTS: Project[] = [
       'Event-driven notification service — consumes events asynchronously via RabbitMQ and dispatches notifications, decoupled from whoever produces those events.',
     github: 'https://github.com/otaldoneto/notification-service',
     tech: ['Java', 'Spring Boot', 'RabbitMQ'],
+    image: '/screenshots/notification-service.svg',
+    imageAlt: 'Diagrama de arquitetura do notification-service',
   },
   {
     title: 'url-shortener',
@@ -28,6 +34,8 @@ export const PROJECTS: Project[] = [
       'URL shortener with a Redis cache-aside layer, click tracking, and an atomic Redis/Lua token-bucket rate limiter. Includes Prometheus/Grafana dashboards and k6 load test results.',
     github: 'https://github.com/otaldoneto/url-shortener',
     tech: ['Java', 'Spring Boot', 'PostgreSQL', 'Redis', 'Prometheus', 'Grafana'],
+    image: '/screenshots/url-shortener.png',
+    imageAlt: 'Dashboard Grafana do url-shortener com métricas reais',
   },
   {
     title: 'support-chat',
@@ -35,6 +43,8 @@ export const PROJECTS: Project[] = [
       'Real-time support chat over WebSocket/STOMP — a customer and an agent exchange messages instantly, with presence tracking and full message history persisted in PostgreSQL.',
     github: 'https://github.com/otaldoneto/support-chat',
     tech: ['Java', 'Spring Boot', 'WebSocket', 'STOMP', 'PostgreSQL'],
+    image: '/screenshots/support-chat.jpg',
+    imageAlt: 'Conversa em tempo real no support-chat',
   },
   {
     title: 'job-tracker',
@@ -42,6 +52,8 @@ export const PROJECTS: Project[] = [
       'Kanban-style job application tracker — drag-and-drop between and within columns, inline editing, and a stats page with charts, backed by a Next.js full-stack app with Prisma and Postgres.',
     github: 'https://github.com/otaldoneto/job-tracker',
     tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma'],
+    image: '/screenshots/job-tracker.jpg',
+    imageAlt: 'Quadro Kanban do job-tracker',
   },
   {
     title: 'job-tracker-mobile',
@@ -49,5 +61,7 @@ export const PROJECTS: Project[] = [
       'React Native (Expo) client for job-tracker — same backend, running natively on iOS and Android from one codebase.',
     github: 'https://github.com/otaldoneto/job-tracker-mobile',
     tech: ['React Native', 'Expo', 'TypeScript'],
+    image: '/screenshots/job-tracker-mobile.png',
+    imageAlt: 'App job-tracker-mobile rodando no Simulador iOS',
   },
 ];

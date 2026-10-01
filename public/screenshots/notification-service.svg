@@ -1,0 +1,38 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="260" fill="#0a0a0a" />
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#D4AF37" />
+    </marker>
+  </defs>
+
+  <g font-family="monospace" font-size="13" fill="#D4AF37">
+    <rect x="20" y="100" width="130" height="60" rx="8" fill="none" stroke="#D4AF37" stroke-width="1.5" />
+    <text x="85" y="125" text-anchor="middle">Serviço</text>
+    <text x="85" y="142" text-anchor="middle">produtor</text>
+
+    <line x1="150" y1="130" x2="225" y2="130" stroke="#D4AF37" stroke-width="1.5" marker-end="url(#arrow)" />
+    <text x="187" y="118" text-anchor="middle" font-size="11" fill="#9a9a9a">publica</text>
+
+    <rect x="230" y="90" width="150" height="80" rx="8" fill="none" stroke="#D4AF37" stroke-width="1.5" />
+    <text x="305" y="120" text-anchor="middle">RabbitMQ</text>
+    <text x="305" y="137" text-anchor="middle">Exchange</text>
+    <text x="305" y="154" text-anchor="middle" font-size="11" fill="#9a9a9a">+ Queue</text>
+
+    <line x1="380" y1="130" x2="455" y2="130" stroke="#D4AF37" stroke-width="1.5" marker-end="url(#arrow)" />
+    <text x="417" y="118" text-anchor="middle" font-size="11" fill="#9a9a9a">consome</text>
+
+    <rect x="460" y="90" width="160" height="80" rx="8" fill="none" stroke="#D4AF37" stroke-width="1.5" />
+    <text x="540" y="120" text-anchor="middle">notification-</text>
+    <text x="540" y="137" text-anchor="middle">service</text>
+    <text x="540" y="154" text-anchor="middle" font-size="11" fill="#9a9a9a">consumer desacoplado</text>
+
+    <line x1="620" y1="130" x2="695" y2="130" stroke="#D4AF37" stroke-width="1.5" marker-end="url(#arrow)" />
+    <text x="657" y="118" text-anchor="middle" font-size="11" fill="#9a9a9a">dispatch</text>
+
+    <rect x="700" y="100" width="90" height="60" rx="8" fill="none" stroke="#D4AF37" stroke-width="1.5" />
+    <text x="745" y="125" text-anchor="middle">Email /</text>
+    <text x="745" y="142" text-anchor="middle">SMS</text>
+  </g>
+</svg>
