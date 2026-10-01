@@ -14,7 +14,7 @@ export function ProjectCard({ project }: { project: Project }) {
           className="block w-full cursor-zoom-in"
           aria-label={`Ampliar imagem de ${project.title}`}
         >
-          <img src={project.image} alt={project.imageAlt} className="h-44 w-full object-cover" />
+          <img src={project.image} alt={project.imageAlt} className="h-44 w-full object-cover object-top" />
         </button>
 
         <div className="p-6">
