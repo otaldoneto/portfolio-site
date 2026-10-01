@@ -1,11 +1,16 @@
 export function ContactSection() {
   return (
-    <section className="relative z-10 mx-auto max-w-3xl px-6 py-24 text-center">
-      <h2 className="mb-6 text-3xl font-bold text-[#D4AF37]">Vamos conversar?</h2>
+    <section
+      id="contato"
+      className="relative z-10 mx-auto max-w-3xl px-6 py-24 text-center"
+    >
+      {" "}
+      <h2 className="mb-6 text-3xl font-bold text-[#D4AF37]">
+        Vamos conversar?
+      </h2>
       <p className="mb-10 text-gray-400">
         Currículo completo, ou contato direto — o que for mais fácil pra você.
       </p>
-
       <div className="flex flex-wrap items-center justify-center gap-4">
         <a
           href="/curriculo-ismael-neto.pdf"
