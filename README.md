@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Site
 
-## Getting Started
+My personal portfolio, live at **[otaldoneto.vercel.app](https://otaldoneto.vercel.app)**. A single-page Next.js site
+that presents the six projects I consider my best, with real screenshots, an about section, a skills grid and a
+downloadable résumé — wrapped in a black-and-gold "digital rain" theme.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router) + **TypeScript**
+- **Tailwind CSS** — styling
+- **Vercel** — hosting, automatic deploy on every push to `main`
+
+No backend and no database: it's a static-friendly site, so there is nothing to configure.
+
+## Running it locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## What's on the page
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- A hero with a looping typewriter effect over a gold matrix-rain canvas
+- Fixed navigation with smooth scrolling between sections
+- About, skills and project sections, each fading in as it enters the viewport
+- Project cards with a real screenshot (click to enlarge) and links to the repository and live demo, when there is one
+- A résumé download and contact links
 
-## Learn More
+## Technical decisions
 
-To learn more about Next.js, take a look at the following resources:
+**The matrix rain is a `<canvas>`, not CSS or video.** Each frame paints a translucent black rectangle over the
+previous one instead of clearing it, which is what leaves the fading trail behind each falling character. It honors
+`prefers-reduced-motion`: if the visitor has that accessibility setting on, the animation never starts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**The canvas sits at `z-index: 0` with content above it, not at `-10`.** An earlier version used a negative z-index
+and the canvas disappeared: the parent `<main>` had its own solid background, and a negatively stacked child is painted
+*behind* its parent's background. The page background now lives on `body`, `<main>` is transparent, and the content
+layers are stacked above the canvas.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**The typewriter is a small state machine, not a pile of timers.** Typing the name, typing the tagline, pausing,
+deleting both and starting over are explicit phases; each effect schedules at most one timeout and cleans it up.
+Every state update happens inside a timeout callback, which keeps React from re-rendering in a cascade.
 
-## Deploy on Vercel
+**Scroll reveal uses `IntersectionObserver`.** A wrapper component fades its children in once they cross a visibility
+threshold, then disconnects the observer — no scroll listeners, and no work after the first reveal.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Project data lives in one typed array.** `src/lib/projects.ts` holds every project's title, description, links,
+stack and screenshot, and the card component only renders it. Adding a project is one new entry.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Screenshots are real, and the headless project gets a diagram instead.** Four projects have a UI and were captured
+running; the API shows its Swagger page; `notification-service` has no interface at all, so it gets an architecture
+diagram. Thumbnails are aligned to the top of the image so a mostly-empty page (like the plain support-chat test
+page) doesn't render as a blank white card.
+
+## Limitations
+
+- The contact section is plain links — there is no contact form or backend behind it.
+- Project descriptions and screenshots are maintained by hand; they don't update when a repository changes.
